@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B536C7422834FA7F00E3F612 /* ViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C7412834FA7F00E3F612 /* ViewController + extension.swift */; };
 		B59789082833B9EF00881027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789072833B9EF00881027 /* AppDelegate.swift */; };
 		B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789092833B9EF00881027 /* SceneDelegate.swift */; };
 		B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597890B2833B9EF00881027 /* AuthViewController.swift */; };
@@ -15,9 +16,11 @@
 		B59789212834D69300881027 /* UIStackView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789202834D69300881027 /* UIStackView + extension.swift */; };
 		B59789232834DE3100881027 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789222834DE3100881027 /* SignUpViewController.swift */; };
 		B59789252834DE6600881027 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789242834DE6600881027 /* AlbumsViewController.swift */; };
+		B59789272834F4B400881027 /* AlbumsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789262834F4B400881027 /* AlbumsViewControllerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B536C7412834FA7F00E3F612 /* ViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + extension.swift"; sourceTree = "<group>"; };
 		B59789042833B9EF00881027 /* ITunesProjectTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITunesProjectTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59789072833B9EF00881027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59789092833B9EF00881027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		B59789202834D69300881027 /* UIStackView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + extension.swift"; sourceTree = "<group>"; };
 		B59789222834DE3100881027 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B59789242834DE6600881027 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		B59789262834F4B400881027 /* AlbumsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewControllerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B59789202834D69300881027 /* UIStackView + extension.swift */,
+				B536C7412834FA7F00E3F612 /* ViewController + extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 		B597891F2834D68000881027 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B59789262834F4B400881027 /* AlbumsViewControllerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -185,7 +191,9 @@
 			files = (
 				B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */,
 				B59789082833B9EF00881027 /* AppDelegate.swift in Sources */,
+				B59789272834F4B400881027 /* AlbumsViewControllerCell.swift in Sources */,
 				B59789252834DE6600881027 /* AlbumsViewController.swift in Sources */,
+				B536C7422834FA7F00E3F612 /* ViewController + extension.swift in Sources */,
 				B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */,
 				B59789212834D69300881027 /* UIStackView + extension.swift in Sources */,
 				B59789232834DE3100881027 /* SignUpViewController.swift in Sources */,
