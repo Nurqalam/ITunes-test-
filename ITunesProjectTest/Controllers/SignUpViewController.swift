@@ -14,7 +14,8 @@ class SignUpViewController: UIViewController {
     private let registrationLabel: UILabel = {
         let label = UILabel()
         label.text = "Registration"
-        label.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
+        label.textColor = #colorLiteral(red: 1, green: 0.3582252628, blue: 0.5298528344, alpha: 1)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -69,9 +70,7 @@ class SignUpViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Phone"
         textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        textField.returnKeyType = .done
-        textField.clearButtonMode = .always
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -107,9 +106,10 @@ class SignUpViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.textContentType = .oneTimeCode
         textField.autocorrectionType = .no
         textField.returnKeyType = .done
-        textField.clearButtonMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -151,6 +151,7 @@ class SignUpViewController: UIViewController {
     }
     
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(registrationLabel)
         
         stackView = UIStackView(arrangedSubviews: [firstNameTextField,
@@ -174,13 +175,38 @@ class SignUpViewController: UIViewController {
     }
     
     private func setDelegates() {
-        
+        firstNameTextField.delegate = self
+        secondNameTextField.delegate = self
+        phoneTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private func setDatePickerSettings() {
-        
+        datePicker.isHighlighted = .random()
+        datePicker.datePickerMode = .date
+//        datePicker.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        datePicker.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        datePicker.layer.borderWidth = 1
+        datePicker.layer.cornerRadius = 6
+        datePicker.tintColor = .black
+        datePicker.semanticContentAttribute = .forceRightToLeft
+        datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
     }
-    
+
+}
+
+
+// MARK: - UITextFieldDelegate
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        firstNameTextField.resignFirstResponder()
+        secondNameTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
 }
 
 
@@ -188,7 +214,20 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            
+            registrationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            registrationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: registrationLabel.bottomAnchor, constant: 90),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35)
+        ])
+        
+        NSLayoutConstraint.activate([
+            signUpButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
+            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 }
