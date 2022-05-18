@@ -42,6 +42,8 @@ class AlbumsViewController: UIViewController {
     private func setDelegates() {
         tableView.delegate = self
         tableView.dataSource = self
+        
+        searchController.searchBar.delegate = self
     }
     
     private func setNavigationBar() {
@@ -61,9 +63,16 @@ class AlbumsViewController: UIViewController {
     }
     
     @objc private func userInfoButtonTapped() {
-//        let userInfoViewController = UserInfoViewController()
-//        navigationController?.pushViewController(userInfoViewController, animated: true)
-        print("hello")
+        let userInfoViewController = UserInfoViewController()
+        navigationController?.pushViewController(userInfoViewController, animated: true)
+    }
+}
+
+
+// MARK: - UISearchControllerDelegate
+extension AlbumsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }
 
@@ -72,6 +81,11 @@ class AlbumsViewController: UIViewController {
 extension AlbumsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailsViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
