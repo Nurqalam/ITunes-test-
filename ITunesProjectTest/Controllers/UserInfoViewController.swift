@@ -71,12 +71,13 @@ class UserInfoViewController: UIViewController {
     
     private func setupViews() {
         title = "Active User"
-
+        view.backgroundColor = .white
+        
         navigationController?.navigationBar.setNeedsLayout()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
     
-        view.backgroundColor = .white
+        
         stackView = UIStackView(arrangedSubviews: [firstNameLabel,
                                                   secondNameLabel,
                                                   ageLabel,

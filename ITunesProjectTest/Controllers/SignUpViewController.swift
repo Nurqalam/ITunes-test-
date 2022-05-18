@@ -136,10 +136,8 @@ class SignUpViewController: UIViewController {
     private var stackView = UIStackView()
     private let datePicker = UIDatePicker()
     
-
-    @objc private func signUpButtonPressed() {
-        print("SignUP")
-    }
+    
+    let nameValidType: String.ValidTypes = .name
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +147,7 @@ class SignUpViewController: UIViewController {
         setConstraints()
         setDatePickerSettings()
     }
+    
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -185,7 +184,6 @@ class SignUpViewController: UIViewController {
     private func setDatePickerSettings() {
         datePicker.isHighlighted = .random()
         datePicker.datePickerMode = .date
-//        datePicker.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         datePicker.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         datePicker.layer.borderWidth = 1
         datePicker.layer.cornerRadius = 6
@@ -194,11 +192,65 @@ class SignUpViewController: UIViewController {
         datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
     }
 
+    
+    @objc private func signUpButtonPressed() {
+        print("SignUP")
+    }
+
+    private func setTextField(textField: UITextField, label: UILabel, validType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
+        
+        let text = (textField.text ?? "") + string
+        let result: String
+        
+        if range.length == 1 {
+            let end = text.index(text.startIndex, offsetBy: text.count - 1)
+            result = String(text[text.startIndex..<end])
+        } else {
+            result = text
+        }
+        
+        textField.text = result
+        
+        if result.isValid(validType: validType) {
+            label.text = validMessage
+            label.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        } else {
+            label.text = wrongMessage
+            label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+    }
 }
 
 
 // MARK: - UITextFieldDelegate
 extension SignUpViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        switch textField {
+        case firstNameTextField: setTextField(textField: firstNameTextField,
+                                              label: firstNameLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Name is valid",
+                                              wrongMessage: "Only A-Z characters, min 1 character",
+                                              string: string,
+                                              range: range)
+            
+        case secondNameTextField: setTextField(textField: secondNameTextField,
+                                              label: secondNameLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Name is valid",
+                                              wrongMessage: "Only A-Z characters, min 1 character",
+                                              string: string,
+                                              range: range)
+
+        default:
+            break
+        }
+        
+        return false
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         firstNameTextField.resignFirstResponder()
         secondNameTextField.resignFirstResponder()
