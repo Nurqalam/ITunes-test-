@@ -9,19 +9,25 @@
 /* Begin PBXBuildFile section */
 		B59789082833B9EF00881027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789072833B9EF00881027 /* AppDelegate.swift */; };
 		B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789092833B9EF00881027 /* SceneDelegate.swift */; };
-		B597890C2833B9EF00881027 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597890B2833B9EF00881027 /* ViewController.swift */; };
+		B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597890B2833B9EF00881027 /* AuthViewController.swift */; };
 		B59789112833B9F000881027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59789102833B9F000881027 /* Assets.xcassets */; };
 		B59789142833B9F000881027 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59789122833B9F000881027 /* LaunchScreen.storyboard */; };
+		B59789212834D69300881027 /* UIStackView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789202834D69300881027 /* UIStackView + extension.swift */; };
+		B59789232834DE3100881027 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789222834DE3100881027 /* SignUpViewController.swift */; };
+		B59789252834DE6600881027 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789242834DE6600881027 /* AlbumsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B59789042833B9EF00881027 /* ITunesProjectTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITunesProjectTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59789072833B9EF00881027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59789092833B9EF00881027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B597890B2833B9EF00881027 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B597890B2833B9EF00881027 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B59789102833B9F000881027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B59789132833B9F000881027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B59789152833B9F000881027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59789202834D69300881027 /* UIStackView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + extension.swift"; sourceTree = "<group>"; };
+		B59789222834DE3100881027 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B59789242834DE6600881027 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,57 @@
 		B59789062833B9EF00881027 /* ITunesProjectTest */ = {
 			isa = PBXGroup;
 			children = (
-				B59789072833B9EF00881027 /* AppDelegate.swift */,
-				B59789092833B9EF00881027 /* SceneDelegate.swift */,
-				B597890B2833B9EF00881027 /* ViewController.swift */,
+				B597891D2834D5E000881027 /* Application */,
+				B597891C2834D5DA00881027 /* Controllers */,
+				B597891E2834D67300881027 /* Extensions */,
+				B597891B2834D5D300881027 /* Resourses */,
+			);
+			path = ITunesProjectTest;
+			sourceTree = "<group>";
+		};
+		B597891B2834D5D300881027 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
 				B59789102833B9F000881027 /* Assets.xcassets */,
 				B59789122833B9F000881027 /* LaunchScreen.storyboard */,
 				B59789152833B9F000881027 /* Info.plist */,
 			);
-			path = ITunesProjectTest;
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		B597891C2834D5DA00881027 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B597891F2834D68000881027 /* Cells */,
+				B597890B2833B9EF00881027 /* AuthViewController.swift */,
+				B59789222834DE3100881027 /* SignUpViewController.swift */,
+				B59789242834DE6600881027 /* AlbumsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B597891D2834D5E000881027 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B59789072833B9EF00881027 /* AppDelegate.swift */,
+				B59789092833B9EF00881027 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B597891E2834D67300881027 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B59789202834D69300881027 /* UIStackView + extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B597891F2834D68000881027 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B597890C2833B9EF00881027 /* ViewController.swift in Sources */,
+				B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */,
 				B59789082833B9EF00881027 /* AppDelegate.swift in Sources */,
+				B59789252834DE6600881027 /* AlbumsViewController.swift in Sources */,
 				B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */,
+				B59789212834D69300881027 /* UIStackView + extension.swift in Sources */,
+				B59789232834DE3100881027 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +329,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S8VC9ZSJXF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ITunesProjectTest/Info.plist;
+				INFOPLIST_FILE = ITunesProjectTest/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -304,7 +356,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S8VC9ZSJXF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ITunesProjectTest/Info.plist;
+				INFOPLIST_FILE = ITunesProjectTest/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
