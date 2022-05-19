@@ -196,7 +196,34 @@ class SignUpViewController: UIViewController {
 
     
     @objc private func signUpButtonPressed() {
-        print("SignUP")
+        
+        let firstNameText = firstNameTextField.text ?? ""
+        let secondNameText = secondNameTextField.text ?? ""
+        let phoneText = phoneTextField.text ?? ""
+        let emailText = emailTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
+        
+        if firstNameText.isValid(validType: nameValidType)
+            && secondNameText.isValid(validType: nameValidType)
+            && phoneText.count == 18
+            && emailText.isValid(validType: emailValidType)
+            && passwordText.isValid(validType: passwordValidType)
+            && ageisValid() == true {
+            
+            DataBase.shared.saveUser(firstName: firstNameText,
+                                     secondName: secondNameText,
+                                     phone: phoneText,
+                                     email: emailText,
+                                     password: passwordText,
+                                     age: datePicker.date)
+            
+            registrationLabel.text = "Registration completed!"
+        } else {
+            registrationLabel.text = "Registration"
+            alertOk(title: "Error", message: "Fill in all the fields and your age must be 18+")
+        }
+        
+        
     }
 
     

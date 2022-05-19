@@ -14,6 +14,7 @@
 		B536C74A283508D800E3F612 /* String + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C749283508D800E3F612 /* String + extension.swift */; };
 		B536C74D28360D7200E3F612 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C74C28360D7200E3F612 /* UserDefaultsManager.swift */; };
 		B536C75028360E1D00E3F612 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C74F28360E1D00E3F612 /* UserModel.swift */; };
+		B536C7522836126400E3F612 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C7512836126400E3F612 /* Alert.swift */; };
 		B59789082833B9EF00881027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789072833B9EF00881027 /* AppDelegate.swift */; };
 		B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789092833B9EF00881027 /* SceneDelegate.swift */; };
 		B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597890B2833B9EF00881027 /* AuthViewController.swift */; };
@@ -36,6 +37,7 @@
 		B536C749283508D800E3F612 /* String + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + extension.swift"; sourceTree = "<group>"; };
 		B536C74C28360D7200E3F612 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B536C74F28360E1D00E3F612 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B536C7512836126400E3F612 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B59789042833B9EF00881027 /* ITunesProjectTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITunesProjectTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59789072833B9EF00881027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59789092833B9EF00881027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				B536C74F28360E1D00E3F612 /* UserModel.swift */,
+				B536C7512836126400E3F612 /* Alert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */,
 				B59789082833B9EF00881027 /* AppDelegate.swift in Sources */,
 				B536C74A283508D800E3F612 /* String + extension.swift in Sources */,
+				B536C7522836126400E3F612 /* Alert.swift in Sources */,
 				B536C74D28360D7200E3F612 /* UserDefaultsManager.swift in Sources */,
 				B536C7442834FB6100E3F612 /* DetailsViewController.swift in Sources */,
 				B59789272834F4B400881027 /* AlbumsViewControllerCell.swift in Sources */,

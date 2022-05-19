@@ -72,19 +72,6 @@ class AuthViewController: UIViewController {
     private var textFeildsStackView = UIStackView()
     private var buttonsStackView = UIStackView()
 
-    
-    @objc private func signInButtonPressed() {
-        let albumViewController = AlbumsViewController()
-        let navVC = UINavigationController(rootViewController: albumViewController)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
-        
-    }
-    
-    @objc private func signUpButtonPressed() {
-        let signUpViewController = SignUpViewController()
-        present(signUpViewController, animated: true)
-    }
 
 
     override func viewDidLoad() {
@@ -95,6 +82,7 @@ class AuthViewController: UIViewController {
         setConstraints()
     }
 
+    
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(iTunesImageView)
@@ -119,7 +107,48 @@ class AuthViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
-
+    
+    
+    @objc private func signInButtonPressed() {
+        
+        let mail = emailTextField.text ?? ""
+        let pass = passwordTextField.text ?? ""
+        let user = findUserDataBase(mail: mail)
+        
+        if user == nil {
+            print("User Not found")
+        } else if user?.password == pass {
+            let navVC = UINavigationController(rootViewController: AlbumsViewController())
+            navVC.modalPresentationStyle = .fullScreen
+            self.present(navVC, animated: true)
+            
+            guard let activeUser = user else {return}
+            DataBase.shared.saveActiveUser(user: activeUser)
+            
+        } else {
+            print("Wrong password")
+        }
+    }
+    
+    @objc private func signUpButtonPressed() {
+        let signUpViewController = SignUpViewController()
+        present(signUpViewController, animated: true)
+    }
+    
+    
+    private func findUserDataBase(mail: String) -> User? {
+        
+        let dataBase = DataBase.shared.users
+        print(dataBase)
+        
+        for user in dataBase {
+            if user.email == mail {
+                return user
+            }
+        }
+        
+        return nil
+    }
 }
 
 
