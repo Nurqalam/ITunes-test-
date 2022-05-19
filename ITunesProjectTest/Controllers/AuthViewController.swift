@@ -17,6 +17,13 @@ class AuthViewController: UIViewController {
         return imageView
     }()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter email here..."
@@ -73,7 +80,6 @@ class AuthViewController: UIViewController {
     private var buttonsStackView = UIStackView()
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +92,7 @@ class AuthViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(iTunesImageView)
+        view.addSubview(errorLabel)
         
         textFeildsStackView = UIStackView(arrangedSubviews: [emailTextField,
                                                             passwordTextField],
@@ -111,30 +118,37 @@ class AuthViewController: UIViewController {
     
     @objc private func signInButtonPressed() {
         
-        let mail = emailTextField.text ?? ""
-        let pass = passwordTextField.text ?? ""
-        let user = findUserDataBase(mail: mail)
+//        let mail = emailTextField.text ?? ""
+//        let pass = passwordTextField.text ?? ""
+//        let user = findUserDataBase(mail: mail)
+//
+//        if user == nil {
+//            errorLabel.text = "User not Found"
+//            errorLabel.textColor = .red
+//        } else if user?.password == pass {
+//            let navVC = UINavigationController(rootViewController: AlbumsViewController())
+//            navVC.modalPresentationStyle = .fullScreen
+//            self.present(navVC, animated: true)
+//
+//            guard let activeUser = user else {return}
+//            DataBase.shared.saveActiveUser(user: activeUser)
+//
+//        } else {
+//            errorLabel.text = "Wrong password"
+//            errorLabel.textColor = .red
+//        }
         
-        if user == nil {
-            print("User Not found")
-        } else if user?.password == pass {
-            let navVC = UINavigationController(rootViewController: AlbumsViewController())
-            navVC.modalPresentationStyle = .fullScreen
-            self.present(navVC, animated: true)
-            
-            guard let activeUser = user else {return}
-            DataBase.shared.saveActiveUser(user: activeUser)
-            
-        } else {
-            print("Wrong password")
-        }
+        let navVC = UINavigationController(rootViewController: AlbumsViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
+
     }
+    
     
     @objc private func signUpButtonPressed() {
         let signUpViewController = SignUpViewController()
         present(signUpViewController, animated: true)
     }
-    
     
     private func findUserDataBase(mail: String) -> User? {
         
@@ -166,8 +180,13 @@ extension AuthViewController: UITextFieldDelegate {
 extension AuthViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            iTunesImageView.bottomAnchor.constraint(equalTo: textFeildsStackView.topAnchor, constant: -90),
+            iTunesImageView.bottomAnchor.constraint(equalTo: textFeildsStackView.topAnchor, constant: -100),
             iTunesImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            errorLabel.bottomAnchor.constraint(equalTo: textFeildsStackView.topAnchor, constant: -20),
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([

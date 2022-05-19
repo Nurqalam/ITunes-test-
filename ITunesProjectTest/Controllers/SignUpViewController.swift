@@ -141,6 +141,7 @@ class SignUpViewController: UIViewController {
     let emailValidType: String.ValidTypes = .email
     let passwordValidType: String.ValidTypes = .password
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

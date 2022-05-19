@@ -70,6 +70,7 @@ class UserInfoViewController: UIViewController {
         setModel()
     }
     
+    
     private func setupViews() {
         title = "Active User"
         view.backgroundColor = .white

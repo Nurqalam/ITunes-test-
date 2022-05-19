@@ -20,6 +20,9 @@ class AlbumsViewController: UIViewController {
     
     
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    var albums = [Album]()
+    var timer: Timer?
 
 
     override func viewDidLoad() {
@@ -30,6 +33,8 @@ class AlbumsViewController: UIViewController {
         setConstraints()
         setNavigationBar()
         setupSearchController()
+        
+        fetchAlbums(albumName: "Sheffield")
     }
     
     
@@ -66,13 +71,46 @@ class AlbumsViewController: UIViewController {
         let userInfoViewController = UserInfoViewController()
         navigationController?.pushViewController(userInfoViewController, animated: true)
     }
+    
+    private func fetchAlbums(albumName: String) {
+        
+        let urlString = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
+        
+        NetworkDataFetch.shared.fetchAlbum(urlString: urlString) {[weak self] albumModel, error in
+            
+            if error == nil {
+                
+                guard let albumModel = albumModel else {return}
+                
+                if albumModel.results != [] {
+                    let sortedAlbums = albumModel.results.sorted { firstItem, secondItem in
+                        return firstItem.collectionName.compare(secondItem.collectionName) == ComparisonResult.orderedAscending
+                    }
+                    self?.albums = sortedAlbums
+                    self?.tableView.reloadData()
+                } else {
+                    self?.alertOk(title: "Error", message: "Album not found. Add some words")
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
 }
 
 
-// MARK: - UISearchControllerDelegate
+// MARK: - UISearchBarDelegate
 extension AlbumsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        
+        if text != "" {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+                self?.fetchAlbums(albumName: text ?? "")
+            })
+        }
     }
 }
 
@@ -85,6 +123,9 @@ extension AlbumsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailsViewController()
+        let album = albums[indexPath.row]
+        detailVC.album = album
+        detailVC.title = album.artistName
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -93,18 +134,17 @@ extension AlbumsViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension AlbumsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AlbumsViewControllerCell else {
             return UITableViewCell()
         }
-        
+        let album = albums[indexPath.row]
+        cell.configureAlbumCell(album: album)
         return cell
     }
-    
-    
 }
 
 

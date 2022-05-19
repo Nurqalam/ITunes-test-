@@ -15,6 +15,10 @@
 		B536C74D28360D7200E3F612 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C74C28360D7200E3F612 /* UserDefaultsManager.swift */; };
 		B536C75028360E1D00E3F612 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C74F28360E1D00E3F612 /* UserModel.swift */; };
 		B536C7522836126400E3F612 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C7512836126400E3F612 /* Alert.swift */; };
+		B536C7542836274100E3F612 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C7532836274100E3F612 /* AlbumModel.swift */; };
+		B536C7572836288C00E3F612 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C7562836288C00E3F612 /* NetworkRequest.swift */; };
+		B536C75928362A7D00E3F612 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C75828362A7D00E3F612 /* NetworkDataFetch.swift */; };
+		B536C75B2836655F00E3F612 /* SongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B536C75A2836655F00E3F612 /* SongsModel.swift */; };
 		B59789082833B9EF00881027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789072833B9EF00881027 /* AppDelegate.swift */; };
 		B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59789092833B9EF00881027 /* SceneDelegate.swift */; };
 		B597890C2833B9EF00881027 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597890B2833B9EF00881027 /* AuthViewController.swift */; };
@@ -38,6 +42,10 @@
 		B536C74C28360D7200E3F612 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B536C74F28360E1D00E3F612 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B536C7512836126400E3F612 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B536C7532836274100E3F612 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
+		B536C7562836288C00E3F612 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		B536C75828362A7D00E3F612 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		B536C75A2836655F00E3F612 /* SongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsModel.swift; sourceTree = "<group>"; };
 		B59789042833B9EF00881027 /* ITunesProjectTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITunesProjectTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59789072833B9EF00881027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59789092833B9EF00881027 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +85,19 @@
 			children = (
 				B536C74F28360E1D00E3F612 /* UserModel.swift */,
 				B536C7512836126400E3F612 /* Alert.swift */,
+				B536C7532836274100E3F612 /* AlbumModel.swift */,
+				B536C75A2836655F00E3F612 /* SongsModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B536C7552836287D00E3F612 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B536C7562836288C00E3F612 /* NetworkRequest.swift */,
+				B536C75828362A7D00E3F612 /* NetworkDataFetch.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B59788FB2833B9EF00881027 = {
@@ -105,6 +124,7 @@
 				B597891D2834D5E000881027 /* Application */,
 				B597891C2834D5DA00881027 /* Controllers */,
 				B536C74E28360E1200E3F612 /* Models */,
+				B536C7552836287D00E3F612 /* Network */,
 				B597891E2834D67300881027 /* Extensions */,
 				B536C74B28360D5800E3F612 /* Services */,
 				B597891B2834D5D300881027 /* Resourses */,
@@ -307,8 +327,12 @@
 				B597890A2833B9EF00881027 /* SceneDelegate.swift in Sources */,
 				B536C7462834FB9100E3F612 /* UserInfoViewController.swift in Sources */,
 				B59789212834D69300881027 /* UIStackView + extension.swift in Sources */,
+				B536C75928362A7D00E3F612 /* NetworkDataFetch.swift in Sources */,
+				B536C75B2836655F00E3F612 /* SongsModel.swift in Sources */,
+				B536C7542836274100E3F612 /* AlbumModel.swift in Sources */,
 				B536C7482834FF3700E3F612 /* SongCollectionViewCell.swift in Sources */,
 				B59789232834DE3100881027 /* SignUpViewController.swift in Sources */,
+				B536C7572836288C00E3F612 /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

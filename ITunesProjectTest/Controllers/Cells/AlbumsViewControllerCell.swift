@@ -60,7 +60,7 @@ class AlbumsViewControllerCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        albumImageView.layer.cornerRadius = self.frame.height / 2
+        albumImageView.layer.cornerRadius = albumImageView.frame.width / 2
     }
     
     
@@ -77,6 +77,32 @@ class AlbumsViewControllerCell: UITableViewCell {
         addSubview(albumImageView)
         addSubview(nameAlbumLabel)
         addSubview(stackView)
+        
+    }
+    
+    func configureAlbumCell(album: Album) {
+        
+        if let urlString = album.artworkUrl100 {
+            NetworkRequest.shared.requestData(urlString: urlString) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumImageView.image = image
+                case .failure(let error):
+                    self?.albumImageView.image = nil
+                    print("No album logo" + error.localizedDescription)
+                }
+            }
+        } else {
+            albumImageView.image = nil
+        }
+        
+        
+        
+        
+        nameAlbumLabel.text = album.collectionName
+        nameArtisLabel.text = album.artistName
+        numberOftracksLabel.text = "\(album.trackCount) tracks"
         
     }
     

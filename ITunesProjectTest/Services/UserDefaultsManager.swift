@@ -21,7 +21,6 @@ class DataBase {
     let userKey = SettingKeys.users.rawValue
     let activeUserKey = SettingKeys.activeUser.rawValue
     
-    
     var users: [User] {
         get {
             if let data = defaults.value(forKey: userKey) as? Data {
@@ -48,6 +47,7 @@ class DataBase {
         
         users.insert(user, at: 0)
     }
+    
     
     var activeUser: User? {
         get {
