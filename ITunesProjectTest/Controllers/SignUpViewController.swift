@@ -138,6 +138,8 @@ class SignUpViewController: UIViewController {
     
     
     let nameValidType: String.ValidTypes = .name
+    let emailValidType: String.ValidTypes = .email
+    let passwordValidType: String.ValidTypes = .password
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,6 +199,7 @@ class SignUpViewController: UIViewController {
         print("SignUP")
     }
 
+    
     private func setTextField(textField: UITextField, label: UILabel, validType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
         
         let text = (textField.text ?? "") + string
@@ -218,6 +221,51 @@ class SignUpViewController: UIViewController {
             label.text = wrongMessage
             label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         }
+    }
+    
+    
+    private func setPhoneNumberMask(textField: UITextField, mask: String, string: String, range: NSRange) -> String {
+        
+        guard let text = textField.text else {
+            return ""
+        }
+        
+        let phone = (text as NSString).replacingCharacters(in: range, with: string)
+        let number = phone.replacingOccurrences(of: "[^0-9]",
+                                                with: "",
+                                                options: .regularExpression,
+                                                range: .none)
+        var result = ""
+        var index = number.startIndex
+        
+        for chars in mask where index < number.endIndex {
+            if chars == "X" {
+                result.append(number[index])
+                index = number.index(after: index)
+            } else {
+                result.append(chars)
+            }
+        }
+        
+        if result.count == 18 {
+            phoneNameLabel.text = "Phone is Valid"
+            phoneNameLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        } else {
+            phoneNameLabel.text = "Phone is Not Valid"
+            phoneNameLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+        return result
+    }
+    
+    private func ageisValid() -> Bool {
+        let calendar = NSCalendar.current
+        let dateNow = Date()
+        let birthday = datePicker.date
+        
+        let age = calendar.dateComponents([.year], from: birthday, to: dateNow)
+        let ageYear = age.year
+        guard let ageUser = ageYear else {return false}
+        return (ageUser < 18 ? false : true)
     }
 }
 
@@ -243,6 +291,28 @@ extension SignUpViewController: UITextFieldDelegate {
                                               wrongMessage: "Only A-Z characters, min 1 character",
                                               string: string,
                                               range: range)
+            
+        case emailTextField: setTextField(textField: emailTextField,
+                                              label: emailNameLabel,
+                                              validType: emailValidType,
+                                              validMessage: "Email is valid",
+                                              wrongMessage: "Email is Not valid",
+                                              string: string,
+                                              range: range)
+            
+        case passwordTextField: setTextField(textField: passwordTextField,
+                                              label: passwordNameLabel,
+                                              validType: passwordValidType,
+                                              validMessage: "Password is valid",
+                                              wrongMessage: "Password is Not valid",
+                                              string: string,
+                                              range: range)
+
+        case phoneTextField: phoneTextField.text = setPhoneNumberMask(textField: phoneTextField,
+                                                                      mask: "+X (XXX) XXX XX XX",
+                                                                      string: string,
+                                                                      range: range)
+
 
         default:
             break
