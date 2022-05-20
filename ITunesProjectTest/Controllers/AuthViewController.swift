@@ -41,6 +41,7 @@ class AuthViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.autocorrectionType = .no
         textField.returnKeyType = .done
+        textField.isSecureTextEntry = true
         textField.clearButtonMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -118,30 +119,25 @@ class AuthViewController: UIViewController {
     
     @objc private func signInButtonPressed() {
         
-//        let mail = emailTextField.text ?? ""
-//        let pass = passwordTextField.text ?? ""
-//        let user = findUserDataBase(mail: mail)
-//
-//        if user == nil {
-//            errorLabel.text = "User not Found"
-//            errorLabel.textColor = .red
-//        } else if user?.password == pass {
-//            let navVC = UINavigationController(rootViewController: AlbumsViewController())
-//            navVC.modalPresentationStyle = .fullScreen
-//            self.present(navVC, animated: true)
-//
-//            guard let activeUser = user else {return}
-//            DataBase.shared.saveActiveUser(user: activeUser)
-//
-//        } else {
-//            errorLabel.text = "Wrong password"
-//            errorLabel.textColor = .red
-//        }
-        
-        let navVC = UINavigationController(rootViewController: AlbumsViewController())
-        navVC.modalPresentationStyle = .fullScreen
-        self.present(navVC, animated: true)
+        let mail = emailTextField.text ?? ""
+        let pass = passwordTextField.text ?? ""
+        let user = findUserDataBase(mail: mail)
 
+        if user == nil {
+            errorLabel.text = "User not Found"
+            errorLabel.textColor = .red
+        } else if user?.password == pass {
+            let navVC = UINavigationController(rootViewController: AlbumsViewController())
+            navVC.modalPresentationStyle = .fullScreen
+            self.present(navVC, animated: true)
+
+            guard let activeUser = user else {return}
+            DataBase.shared.saveActiveUser(user: activeUser)
+
+        } else {
+            errorLabel.text = "Wrong password"
+            errorLabel.textColor = .red
+        }
     }
     
     
