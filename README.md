@@ -4,7 +4,6 @@ training project, imitating iTunes interface.
 ## **USED Stack**
 - Swift
 - UIKit
-- MVC
 - CocoaPods
 - JSON
 
