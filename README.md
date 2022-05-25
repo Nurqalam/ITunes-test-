@@ -5,7 +5,7 @@ training project, imitating iTunes interface.
 - Swift
 - UIKit
 - CocoaPods
-- JSON
+- URLSession
 
 #
 <img width="389" alt="authVC" src="https://user-images.githubusercontent.com/96972423/169451248-88ad0264-e739-4f2d-aa7b-7f68ae79556b.png"><img width="389" alt="signUpVC" src="https://user-images.githubusercontent.com/96972423/169451262-9c032879-ec20-4e84-92a0-45aab831d77c.png">
